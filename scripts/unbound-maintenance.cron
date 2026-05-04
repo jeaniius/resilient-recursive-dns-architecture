@@ -1,0 +1,11 @@
+# Cron job for Unbound maintenance and root hints update
+# Add this to /etc/cron.d/unbound-maintenance or run: sudo crontab -e
+
+# Update root hints weekly (Sunday at midnight)
+0 0 * * 0 wget -O /var/lib/unbound/root.hints https://www.internic.net/domain/named.root && systemctl restart unbound
+
+# Check Unbound status daily (6 AM)
+0 6 * * * /usr/sbin/unbound-control -c /etc/unbound/unbound.conf status >> /var/log/unbound/status-check.log 2>&1
+
+# Log rotation - monthly cleanup of old logs
+0 0 1 * * find /var/log/unbound -name "*.log.*" -mtime +30 -delete

@@ -1,0 +1,35 @@
+# Sensitive configuration files
+*.key
+*.pem
+*.crt
+*.conf.local
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Dependencies (if applicable)
+node_modules/
+venv/
+__pycache__/
+*.pyc
